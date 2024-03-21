@@ -8,13 +8,19 @@ const name = [
     "Ella", "Faith", "Olivia", "Penelope"]
 
 // fungsi cari nama
-const searchName = (key, limits, tampil) => {
+const searchName = (key, limits, callback) => {
 
     // fungsi filter nama berdasarkan key
     const search = name.filter((nm) => nm.toLowerCase().includes(key.toLowerCase()))
 
     // melakukan pembatasan jumlah array berdasarkan limit
     const limit = search.slice(0, limits)
+    let hasil = ''
+    if(limit.length<1){
+        console.log(hasil);
+    } else {
+        hasil = limit
+    }
 
     // variabel output
     const output = `
@@ -24,15 +30,15 @@ kata Kunci : ${key}
 
 jumlah output : ${limits}
 
-Hasil Pencarian : ${limit}
+Hasil Pencarian : ${hasil}
     `
-    tampil(output)
+    callback(output)
 }
 
 // fungsi callback untuk menampilkan output
-const callback = tampilkan => console.log(tampilkan)
+const tampil = tampilkan => console.log(tampilkan)
 
 
-searchName('an', 3, callback)
+searchName('aasn', 3, tampil)
 
 // Tugas 2 end
